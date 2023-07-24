@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  product-service-postgres:
+    image: postgres:alpine
+    container_name: bookstore-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: bookstore
+#    volumes:
+#      - bookstore:/data/db
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+#volumes:
+#  bookstore:

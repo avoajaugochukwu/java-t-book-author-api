@@ -1,0 +1,27 @@
+### Create author 1
+POST http://localhost:8089/api/v1/authors
+Content-Type: application/json
+
+{
+  "name": "Richard Feimann"
+}
+
+### Create author 2
+POST http://localhost:8089/api/v1/authors
+Content-Type: application/json
+
+{
+  "name": "Zap Braniggan"
+}
+
+### Create author 3
+POST http://localhost:8089/api/v1/authors
+Content-Type: application/json
+
+{
+  "name": "Brian Tracy"
+}
+
+### Get all authors
+GET http://localhost:8089/api/v1/authors
+Content-Type: application/json

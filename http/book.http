@@ -1,0 +1,8 @@
+### Create book 1
+POST http://localhost:8089/api/v1/books
+Content-Type: application/json
+
+{
+  "title": "How to think",
+  "author": 1
+}

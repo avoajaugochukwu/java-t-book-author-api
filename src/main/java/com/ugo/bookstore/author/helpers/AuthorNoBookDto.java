@@ -15,6 +15,5 @@ import java.util.List;
 public class AuthorNoBookDto {
     private Long id;
     private String name;
-
     List<BookNoAuthorDto> books;
 }

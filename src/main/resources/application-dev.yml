@@ -2,7 +2,7 @@ spring:
   application:
     name: bookstore
   datasource:
-    url: jdbc:postgresql://database-1.cpgcowkvucco.us-east-1.rds.amazonaws.com:5432/bookstore
+    url: jdbc:postgresql://terraform-20230808031113393200000001.cpgcowkvucco.us-east-1.rds.amazonaws.com:5432/demodeploy
     username: postgres
     password: password
   jpa:

@@ -3,16 +3,23 @@ package com.ugo.bookstore.book;
 import com.ugo.bookstore.author.Author;
 import com.ugo.bookstore.author.helpers.AuthorDto;
 import com.ugo.bookstore.book.helpers.BookDto;
+import com.ugo.bookstore.book.helpers.BookNoAuthorDto;
+import com.ugo.bookstore.book.helpers.BookNoAuthorMapper;
 import com.ugo.bookstore.book.helpers.BookRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
+    private final BookNoAuthorMapper bookNoAuthorMapper;
 
     public void create(BookRequest bookRequest) {
         Author author = Author.builder()
@@ -21,6 +28,7 @@ public class BookService {
 
         Book book = Book.builder()
                 .title(bookRequest.getTitle())
+                .price(bookRequest.getPrice())
                 .author(author)
                 .build();
 
@@ -32,17 +40,15 @@ public class BookService {
         return BookDto.builder()
                 .id(book.getId())
                 .title(book.getTitle())
-                .author(toAuthorDto(book))
+                .author(book.getAuthor().getName())
+                .price(book.getPrice())
                 .build();
     }
 
-    public Page<BookDto> getAll(Pageable pageable) {
+    public Page<BookNoAuthorDto> getAll(Pageable pageable) {
         Page<Book> books =  bookRepository.findAll(pageable);
-        return books.map(book -> BookDto.builder()
-                .id(book.getId())
-                .title(book.getTitle())
-                .author(toAuthorDto(book))
-                .build());
+        log.info("Books: {}", books.map(bookNoAuthorMapper));
+        return books.map(bookNoAuthorMapper);
     }
 
     public AuthorDto toAuthorDto(Book book) {

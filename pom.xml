@@ -58,6 +58,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>bookstore</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -73,5 +74,22 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<!-- Profiles are here, outside of the plugins section -->
+	<!-- to build mvn clean install -P local|dev -DskipTests && mv target/bookstore.jar ./ -->
+	<profiles>
+		<profile>
+			<id>local</id>
+			<properties>
+				<spring.profiles.active>local</spring.profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<spring.profiles.active>dev</spring.profiles.active>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>

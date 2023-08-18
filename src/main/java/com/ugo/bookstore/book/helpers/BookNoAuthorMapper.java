@@ -11,11 +11,12 @@ import java.util.function.Function;
 public class BookNoAuthorMapper implements Function<Book, BookNoAuthorDto> {
     @Override
     public BookNoAuthorDto apply(Book book) {
-        BookNoAuthorDto bookNoAuthorMapper = BookNoAuthorDto.builder()
+
+        return BookNoAuthorDto.builder()
                 .id(book.getId())
                 .title(book.getTitle())
+                .author(book.getAuthor().getName())
+                .price(book.getPrice())
                 .build();
-
-        return bookNoAuthorMapper;
     }
 }

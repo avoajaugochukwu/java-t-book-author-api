@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class BookRequest {
     private String title;
     private Long author;
+    private Double price;
 }

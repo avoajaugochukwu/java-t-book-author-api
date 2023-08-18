@@ -14,12 +14,11 @@ public class BookMapper implements Function<Book, BookDto> {
 
     @Override
     public BookDto apply(Book book) {
-        BookDto bookDto = BookDto.builder()
+
+        return BookDto.builder()
                 .id(book.getId())
                 .title(book.getTitle())
-//                .author(authorNoBookMapper.apply(book.getAuthor()))
+                .price(book.getPrice())
                 .build();
-
-        return bookDto;
     }
 }

@@ -4,5 +4,26 @@ Content-Type: application/json
 
 {
   "title": "How to think",
-  "author": 1
+  "author": 1,
+  "price": 106.33
+}
+
+### Create book 2
+POST http://localhost:8089/api/v1/books
+Content-Type: application/json
+
+{
+  "title": "First Principles",
+  "author": 1,
+  "price": 78.09
+}
+
+### Create book 3
+POST http://localhost:8089/api/v1/books
+Content-Type: application/json
+
+{
+  "title": "Rich Dad Poor Dad",
+  "author": 2,
+  "price": 56.85
 }
